@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contáctenos para solicitar una asesoría financiera empresarial o estatal. Estamos en Pereira, Colombia." />
+  <title>Escríbenos — Consultoría & Asesoría</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="logo-box">
+        <img src="assets/images/logo.png" alt="Consultoría & Asesoría logo" />
+      </div>
+      <span class="nav-brand cg">Consultoría <em>&amp;</em> Asesoría</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="escribenos.html" class="active">Escríbenos</a>
+    </div>
+
+    <button class="hamburger" id="hambBtn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+    <a href="index.html">Inicio</a>
+    <a href="quienes-somos.html">Quiénes somos</a>
+    <a href="escribenos.html" class="active">Escríbenos</a>
+  </nav>
+
+  <!-- ── CONTACT FORM ── -->
+  <div class="form-wrap">
+
+    <h1 class="form-title cg fi">Escríbenos</h1>
+    <p class="form-sub fi">Cuéntenos su necesidad y nos pondremos en contacto a la brevedad</p>
+
+    <form id="contactForm" novalidate>
+      <div id="formWrap" class="fi">
+        <div class="form-grid">
+
+          <div class="fg">
+            <label for="f-nombre">Nombre</label>
+            <input type="text" id="f-nombre" name="nombre" placeholder="Nombre completo" required autocomplete="name" />
+          </div>
+
+          <div class="fg">
+            <label for="f-empresa">Empresa</label>
+            <input type="text" id="f-empresa" name="empresa" placeholder="Nombre de la empresa" autocomplete="organization" />
+          </div>
+
+          <div class="fg">
+            <label for="f-correo">Correo electrónico</label>
+            <input type="email" id="f-correo" name="correo" placeholder="correo@empresa.com" required autocomplete="email" />
+          </div>
+
+          <div class="fg">
+            <label for="f-telefono">Teléfono</label>
+            <input type="tel" id="f-telefono" name="telefono" placeholder="+57 300 000 0000" autocomplete="tel" />
+          </div>
+
+          <div class="fg full">
+            <label for="f-servicio">Tipo de servicio requerido</label>
+            <select id="f-servicio" name="servicio">
+              <option value="">— Seleccionar servicio —</option>
+              <option>Diagnóstico Financiero del Negocio</option>
+              <option>Proyección de Flujos de Efectivo</option>
+              <option>Proyección de Informes Empresariales</option>
+              <option>Análisis y Estrategias de Flujo de Caja</option>
+              <option>DataBases / Bases de Datos</option>
+              <option>Creación de Dashboards</option>
+              <option>Modelación Financiera / Predicción</option>
+              <option>Cálculo de Indicadores Financieros</option>
+              <option>Valoración de Empresas (EV, WACC, ROI)</option>
+              <option>Estructuración y Revisión de Contratación Estatal</option>
+              <option>Análisis Integral del Sector</option>
+              <option>Proyección de Presupuestos</option>
+              <option>Automatización Avanzada de Excel</option>
+              <option>Power BI</option>
+              <option>Estadística Aplicada</option>
+              <option>Otro / A definir</option>
+            </select>
+          </div>
+
+          <div class="fg full">
+            <label for="f-mensaje">Mensaje</label>
+            <textarea id="f-mensaje" name="mensaje" placeholder="Describa brevemente su necesidad o proyecto..."></textarea>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#050e1a" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M22 2L11 13"/>
+            <path d="M22 2L15 22 11 13 2 9l20-7z"/>
+          </svg>
+          Solicitar asesoría financiera
+        </button>
+
+      </div>
+    </form>
+
+    <!-- Success message -->
+    <div class="form-ok" id="formOk">
+      <h3 class="cg">¡Mensaje recibido!</h3>
+      <p>Gracias por contactarnos. Nos pondremos en contacto con usted a la brevedad.</p>
+    </div>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="ft-logo-row">
+      <div class="ft-logo-box">
+        <img src="assets/images/logo.png" alt="Logo" />
+      </div>
+      <span class="ft-brand cg">Consultoría <em>&amp;</em> Asesoría</span>
+    </div>
+    <div class="ft-contact">
+      <div class="ft-item"><strong>Email</strong>&nbsp;<a href="mailto:isaiasuji@gmail.com" style="color:#4a90c4;">isaiasuji@gmail.com</a></div>
+      <div class="ft-item"><strong>WhatsApp</strong>&nbsp;<a href="https://wa.me/573043420425" style="color:#4a90c4;">304 342 0425</a></div>
+      <div class="ft-item"><strong>Ciudad</strong>&nbsp;Pereira, Colombia</div>
+    </div>
+    <div class="ft-links">
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+    </div>
+    <p class="ft-copy">© 2025 Consultoría &amp; Asesoría · Pereira, Colombia · Todos los derechos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
