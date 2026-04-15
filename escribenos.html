@@ -42,33 +42,50 @@
     <h1 class="form-title cg fi">Escríbenos</h1>
     <p class="form-sub fi">Cuéntenos su necesidad y nos pondremos en contacto a la brevedad</p>
 
-    <form id="contactForm" novalidate>
+    <!--
+      FormSubmit.co — envío real sin backend.
+      PRIMER USO: FormSubmit enviará un correo de activación a isaiasuji@gmail.com.
+      Después de confirmar una vez, todos los envíos llegan directamente.
+    -->
+    <form
+      id="contactForm"
+      action="https://formsubmit.co/isaiasuji@gmail.com"
+      method="POST"
+      novalidate
+    >
+      <!-- Configuración FormSubmit -->
+      <input type="hidden" name="_subject"      value="Nueva solicitud de asesoría financiera — Consultoría &amp; Asesoría" />
+      <input type="hidden" name="_captcha"      value="false" />
+      <input type="hidden" name="_template"     value="table" />
+      <input type="hidden" name="_next"         value="gracias.html" />
+      <input type="hidden" name="_autoresponse" value="Hemos recibido su solicitud de asesoría financiera. Nos pondremos en contacto con usted a la brevedad. Gracias por confiar en Consultoría &amp; Asesoría." />
+
       <div id="formWrap" class="fi">
         <div class="form-grid">
 
           <div class="fg">
-            <label for="f-nombre">Nombre</label>
-            <input type="text" id="f-nombre" name="nombre" placeholder="Nombre completo" required autocomplete="name" />
+            <label for="f-nombre">Nombre *</label>
+            <input type="text" id="f-nombre" name="Nombre" placeholder="Nombre completo" required autocomplete="name" />
           </div>
 
           <div class="fg">
             <label for="f-empresa">Empresa</label>
-            <input type="text" id="f-empresa" name="empresa" placeholder="Nombre de la empresa" autocomplete="organization" />
+            <input type="text" id="f-empresa" name="Empresa" placeholder="Nombre de la empresa" autocomplete="organization" />
           </div>
 
           <div class="fg">
-            <label for="f-correo">Correo electrónico</label>
-            <input type="email" id="f-correo" name="correo" placeholder="correo@empresa.com" required autocomplete="email" />
+            <label for="f-correo">Correo electrónico *</label>
+            <input type="email" id="f-correo" name="Correo" placeholder="correo@empresa.com" required autocomplete="email" />
           </div>
 
           <div class="fg">
             <label for="f-telefono">Teléfono</label>
-            <input type="tel" id="f-telefono" name="telefono" placeholder="+57 300 000 0000" autocomplete="tel" />
+            <input type="tel" id="f-telefono" name="Telefono" placeholder="+57 300 000 0000" autocomplete="tel" />
           </div>
 
           <div class="fg full">
             <label for="f-servicio">Tipo de servicio requerido</label>
-            <select id="f-servicio" name="servicio">
+            <select id="f-servicio" name="Servicio requerido">
               <option value="">— Seleccionar servicio —</option>
               <option>Diagnóstico Financiero del Negocio</option>
               <option>Proyección de Flujos de Efectivo</option>
@@ -91,26 +108,26 @@
 
           <div class="fg full">
             <label for="f-mensaje">Mensaje</label>
-            <textarea id="f-mensaje" name="mensaje" placeholder="Describa brevemente su necesidad o proyecto..."></textarea>
+            <textarea id="f-mensaje" name="Mensaje" placeholder="Describa brevemente su necesidad o proyecto..."></textarea>
           </div>
 
         </div>
 
-        <button type="submit" class="btn-submit">
+        <button type="submit" class="btn-submit" id="btnSubmit">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#050e1a" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
             <path d="M22 2L11 13"/>
             <path d="M22 2L15 22 11 13 2 9l20-7z"/>
           </svg>
-          Solicitar asesoría financiera
+          <span id="btnText">Solicitar asesoría financiera</span>
         </button>
 
       </div>
     </form>
 
-    <!-- Success message -->
+    <!-- Success message (se muestra si JS valida antes del envío) -->
     <div class="form-ok" id="formOk">
-      <h3 class="cg">¡Mensaje recibido!</h3>
-      <p>Gracias por contactarnos. Nos pondremos en contacto con usted a la brevedad.</p>
+      <h3 class="cg">¡Solicitud enviada correctamente!</h3>
+      <p>Hemos recibido su mensaje. Nos pondremos en contacto con usted a la brevedad.</p>
     </div>
 
   </div>

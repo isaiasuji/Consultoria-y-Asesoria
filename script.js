@@ -155,47 +155,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.fi').forEach(el => fadeObs.observe(el));
 
-  // ── CONTACT FORM ────────────────────────────────────────
+  // ── CONTACT FORM (FormSubmit integration) ───────────────
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+      const nombre = document.getElementById('f-nombre');
+      const correo = document.getElementById('f-correo');
+      let valid    = true;
 
-      const nombre  = document.getElementById('f-nombre');
-      const correo  = document.getElementById('f-correo');
-      let valid = true;
-
-      // Simple validation
+      // Validate required fields before allowing FormSubmit to send
       [nombre, correo].forEach(field => {
         if (!field) return;
         if (!field.value.trim()) {
           field.style.borderColor = 'rgba(220, 80, 80, 0.5)';
+          field.style.background  = 'rgba(220, 80, 80, 0.05)';
           valid = false;
         } else {
           field.style.borderColor = '';
+          field.style.background  = '';
         }
       });
 
       if (correo && correo.value.trim()) {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(correo.value.trim())) {
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value.trim());
+        if (!emailOk) {
           correo.style.borderColor = 'rgba(220, 80, 80, 0.5)';
+          correo.style.background  = 'rgba(220, 80, 80, 0.05)';
           valid = false;
         }
       }
 
-      if (!valid) return;
+      if (!valid) {
+        e.preventDefault(); // Block submission if invalid
+        // Scroll to first error
+        const firstError = contactForm.querySelector('input[style*="rgb(220"]');
+        if (firstError) firstError.focus();
+        return;
+      }
 
-      // Show success
-      document.getElementById('formWrap').style.display = 'none';
-      document.getElementById('formOk').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Valid: show loading state on button
+      const btn     = document.getElementById('btnSubmit');
+      const btnText = document.getElementById('btnText');
+      if (btn && btnText) {
+        btnText.textContent = 'Enviando...';
+        btn.style.opacity   = '0.75';
+        btn.style.cursor    = 'not-allowed';
+      }
+      // FormSubmit will now submit and redirect to gracias.html
     });
 
-    // Reset validation styling on input
+    // Clear error styles on input
     contactForm.querySelectorAll('input, textarea, select').forEach(field => {
       field.addEventListener('input', () => {
         field.style.borderColor = '';
+        field.style.background  = '';
       });
     });
   }
