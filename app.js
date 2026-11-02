@@ -119,5 +119,43 @@
     $$('.copy', ck).forEach(b => b.onclick = () => { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copiado'; setTimeout(() => b.textContent = 'Copiar', 1500); });
   }
 
+
+  // ── Formularios con respaldo por WhatsApp ─────────────────
+  // Intenta enviar por FormSubmit (AJAX). Si el servicio no responde en 10 s
+  // o falla, abre WhatsApp con los datos ya escritos para no perder el contacto.
+  $$('form[action*="formsubmit.co"]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      if (e.defaultPrevented) return;            // validación de script.js falló
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const txt = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.innerHTML = 'Enviando…'; }
+      const fd = new FormData(form);
+      const resumen = [];
+      fd.forEach((v, k) => { if (!k.startsWith('_') && String(v).trim()) resumen.push(`${k}: ${v}`); });
+      const next = (form.querySelector('input[name="_next"]') || {}).value || 'gracias.html';
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 10000);
+        const r = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+          method: 'POST', body: fd, headers: { 'Accept': 'application/json' }, signal: ctrl.signal
+        });
+        clearTimeout(timer);
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'Error');
+        location.href = next.startsWith('http') ? 'gracias.html' : next;
+      } catch (err) {
+        if (btn) { btn.disabled = false; btn.innerHTML = txt; }
+        const asunto = (form.querySelector('input[name="_subject"]') || {}).value || 'Mensaje desde la web';
+        const msg = `Hola Isaías, te escribo desde la web (${asunto}).\n\n${resumen.join('\n')}`;
+        let box = form.parentNode.querySelector('.fallback-box');
+        if (!box) { box = document.createElement('div'); box.className = 'fallback-box'; form.after(box); }
+        box.innerHTML = `<p>No pudimos enviar el formulario en este momento. Envíalo por WhatsApp con un clic; tus datos ya van escritos:</p>
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="${wa(msg)}">Enviar por WhatsApp</a>`;
+        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+
   if ($('.sticky-buy')) document.body.classList.add('has-sticky');
 })();

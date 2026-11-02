@@ -229,3 +229,6 @@
   .sticky-buy { display: flex; }
   body.has-sticky { padding-bottom: 64px; }
 }
+
+.fallback-box { margin-top: 16px; padding: 16px 18px; border-radius: 12px; border: 1px solid rgba(201,162,74,.4); background: rgba(201,162,74,.07); display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.fallback-box p { font-size: 13.5px; color: #e0cfa0; line-height: 1.6; }
