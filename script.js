@@ -46,11 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const tipEl   = document.getElementById('tipEl');
   const dotsEl  = document.getElementById('tipDots');
   const tips = [
+    '"La riqueza es lo que no ves" — Morgan Housel',
     '"El flujo de caja es más importante que la utilidad"',
     '"Las decisiones sin datos financieros son apuestas"',
     '"Una proyección financiera evita crisis futuras"',
     '"El análisis del sector define la estrategia"',
-    '"La automatización financiera aumenta la rentabilidad"'
+    '"Una buena idea sin un proyecto bien formulado no consigue recursos"'
   ];
 
   if (tipEl && dotsEl) {
@@ -84,60 +85,55 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── SERVICES GRID (index only) ──────────────────────────
   const svcGrid = document.getElementById('svcGrid');
   const services = [
+    'Diagnóstico y Plan Financiero Personal',
+    'Acompañamiento Mensual en Finanzas Personales',
+    'Conferencias y Talleres de Finanzas Personales',
+    'Asesoría para Compra de Vivienda y Manejo de Deudas',
     'Diagnóstico Financiero del Negocio',
-    'Proyección de Flujos de Efectivo',
-    'Proyección de Informes Empresariales Periódicos',
-    'Análisis y Estrategias de Flujo de Caja',
-    'DataBases',
-    'Creación de Dashboards',
-    'Modelación (Predicción Financiera)',
-    'Cálculo y Revisión de Indicadores Financieros y Organizacionales',
-    'Valoración de Empresas (EV, WACC, ROI)',
-    'Estructuración y Revisión de Procesos de Contratación Estatal',
-    'Análisis Integral del Sector / Nicho',
-    'Proyección o Revisión de Presupuestos',
-    'Automatización Avanzada de Excel',
-    'Power BI',
-    'Estadística Aplicada'
+    'Proyección de Flujos de Efectivo y Presupuestos',
+    'Modelación Financiera y Valoración de Empresas',
+    'CFO Externo para Mipymes',
+    'Dashboards, Power BI y Automatización en Excel',
+    'Formulación de Proyectos para Convocatorias',
+    'Estructuración Presupuestal de Proyectos',
+    'Monitoreo de Convocatorias y Fondos',
+    'Estructuración Financiera de Ofertas para Licitaciones',
+    'Indicadores Financieros Habilitantes',
+    'Acuerdos Marco y Tienda Virtual del Estado'
   ];
+  const isNew = [0,1,2,3,9,10,11];
 
   if (svcGrid) {
     services.forEach((s, i) => {
       const card = document.createElement('div');
-      card.className = 'svc-card fi';
+      card.className = 'svc-card fi' + (isNew.includes(i) ? ' hl' : '');
       card.innerHTML = `<div class="svc-n">${String(i + 1).padStart(2, '0')}</div><div class="svc-t">${s}</div>`;
       svcGrid.appendChild(card);
     });
     const last = document.createElement('div');
     last.className = 'svc-card hl fi';
-    last.innerHTML = `<div class="svc-n">+</div><div class="svc-t">Y muchos más de acuerdo a su necesidad</div>`;
+    last.innerHTML = `<div class="svc-n">+</div><div class="svc-t">Y muchos más de acuerdo a tu necesidad</div>`;
     svcGrid.appendChild(last);
   }
 
   // ── COUNTER ANIMATION ───────────────────────────────────
-  function animateCounter(el, target, duration) {
+  function animateCounter(el) {
+    const target = +el.dataset.target, pre = el.dataset.pre || '', suf = el.dataset.suf || '+';
     let value = 0;
-    const step = Math.max(1, Math.ceil(target / (duration / 16)));
+    const step = Math.max(1, Math.ceil(target / (1000 / 16)));
     const timer = setInterval(() => {
       value = Math.min(value + step, target);
-      el.innerHTML = value + '<em>+</em>';
+      el.innerHTML = pre + value + '<em>' + suf + '</em>';
       if (value >= target) clearInterval(timer);
     }, 16);
   }
-
-  const m1 = document.getElementById('m1');
-  const m2 = document.getElementById('m2');
-  const m3 = document.getElementById('m3');
-  let countersStarted = false;
-
   const metricsEl = document.querySelector('.metrics');
   if (metricsEl) {
+    let started = false;
     const counterObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !countersStarted) {
-        countersStarted = true;
-        if (m1) animateCounter(m1, 15, 900);
-        if (m2) animateCounter(m2, 13, 1100);
-        if (m3) animateCounter(m3, 3,  700);
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        document.querySelectorAll('.m-num[data-target]').forEach(animateCounter);
       }
     }, { threshold: 0.3 });
     counterObs.observe(metricsEl);
