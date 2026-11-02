@@ -46,7 +46,7 @@ window.CYA = {
     },
     "evento-preventa": {
       nombre: "Entrada · Conferencia «Tu dinero, tus reglas» (oferta de lanzamiento)",
-      tipo: "Evento presencial · 3 horas y media · comida incluida",
+      tipo: "Evento presencial · 3 horas y media · pausa para refrigerio",
       precio: 50000,                       // EDITA: oferta de lanzamiento
       precioAntes: 100000,                 // EDITA: precio general, se muestra tachado
       entrega: "Recibes tu entrada con código QR por WhatsApp en menos de 24 horas después de confirmar el pago.",
@@ -54,7 +54,7 @@ window.CYA = {
     },
     "evento-general": {
       nombre: "Entrada · Conferencia «Tu dinero, tus reglas»",
-      tipo: "Evento presencial · 3 horas y media · comida incluida",
+      tipo: "Evento presencial · 3 horas y media · pausa para refrigerio",
       precio: 160000,                      // EDITA: precio general
       precioAntes: 0,
       entrega: "Recibes tu entrada con código QR por WhatsApp en menos de 24 horas después de confirmar el pago.",
