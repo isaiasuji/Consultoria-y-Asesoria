@@ -46,7 +46,7 @@ window.CYA = {
     },
     "evento-preventa": {
       nombre: "Entrada · Conferencia «Tu dinero, tus reglas» (oferta de lanzamiento)",
-      tipo: "Evento presencial · 3 horas · almuerzo incluido",
+      tipo: "Evento presencial · 3 horas y media · comida incluida",
       precio: 50000,                       // EDITA: oferta de lanzamiento
       precioAntes: 100000,                 // EDITA: precio general, se muestra tachado
       entrega: "Recibes tu entrada con código QR por WhatsApp en menos de 24 horas después de confirmar el pago.",
@@ -54,7 +54,7 @@ window.CYA = {
     },
     "evento-general": {
       nombre: "Entrada · Conferencia «Tu dinero, tus reglas»",
-      tipo: "Evento presencial · 3 horas · almuerzo incluido",
+      tipo: "Evento presencial · 3 horas y media · comida incluida",
       precio: 160000,                      // EDITA: precio general
       precioAntes: 0,
       entrega: "Recibes tu entrada con código QR por WhatsApp en menos de 24 horas después de confirmar el pago.",
@@ -66,12 +66,12 @@ window.CYA = {
   evento: {
     titulo: "Tu dinero, tus reglas",
     subtitulo: "Conferencia de finanzas personales para construir riqueza y tranquilidad",
-    fechaISO: "2027-02-13T09:00:00-05:00", // EDITA: fecha y hora de inicio (hora Colombia)
-    fechaTexto: "Sábado 13 de febrero de 2027 · 9:00 a. m. – 12:00 m.",
-    lugar: "Salón privado en Pereira · dirección exacta al confirmar tu entrada",
-    cupos: 40,                             // EDITA: cupos totales
+    fechaISO: "2026-12-11T18:00:00-05:00", // EDITA: fecha y hora de inicio (hora Colombia)
+    fechaTexto: "Viernes 11 de diciembre de 2026 · 6:00 p. m. – 9:30 p. m.",
+    lugar: "Salón Social Zapan · dirección exacta al confirmar tu entrada",
+    cupos: 50,                             // EDITA: cupos totales
     cuposVendidos: 0,                      // EDITA a mano a medida que vendas
-    preventaHasta: "2027-01-15",           // EDITA: fin de la preventa
+    preventaHasta: "2026-11-30",           // EDITA: fin de la preventa
     // Videos: pega el enlace "embed" de YouTube (ej. https://www.youtube.com/embed/ID) o deja "" para mostrar "Próximamente"
     videos: [
       { titulo: "¿Por qué ganas más y te alcanza igual?", url: "" },
